@@ -57,4 +57,19 @@ group :development do
 
   # Use Foreman to run necessary servers for development
   gem "foreman", "~> 0.88"
+
+  # Use AnnotateRB to automatically comments summarizing model scheme to the top of relevant files
+  gem "annotaterb", "~> 4.16"
+
+  # Letter Opener opens sent emails to a new tab of the default web browser
+  gem "letter_opener", "~> 1.10"
+  # Letter Opener Web adds a UI for browsing sent emails
+  gem "letter_opener_web", "~> 3.0"
+
+  # Rack Mini Profiler adds a speed badge to every HTML badge
+  gem "rack-mini-profiler", "~> 4.0"
+  # Memory Profiler adds memory profiling to Rack Mini Profiler
+  gem "memory_profiler", "~> 1.1"
+  # Stackprof adds call stack profiling flamegraphs to Rack Mini Profiler
+  gem "stackprof", "~> 0.2"
 end

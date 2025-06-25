@@ -1,5 +1,7 @@
+# Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # In development, send emails to a new tab of the default web browser
+  mount LetterOpenerWeb::Engine, at: "/sent_emails" if Rails.env.development?
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
