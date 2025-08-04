@@ -48,10 +48,34 @@ group :development, :test do
   gem "debug", "~> 1.11", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", "~> 7.0", require: false
+  gem "brakeman", "~> 7.1", require: false
+
+  # Use Bundler Audit to check for insecure versions of gems in Gemfile.lock
+  gem "bundler-audit", "~> 0.9"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", "~> 1.1", require: false
+  # Rubocop Rake is used by Rubocop to lint rake files
+  gem "rubocop-rake", "~> 0.7", require: false
+  # Rubocop RSpec is used by Rubocop to lint rspec tests
+  gem "rubocop-rspec", "~> 3.6", require: false
+  # Rubocop RSpec Rails is used by Rubocop to simplify adopting new RSpec Rails functionality
+  gem "rubocop-rspec_rails", "~> 2.31", require: false
+  # Rubocop Factory Bot is used by Rubocop to lint test factories from Factory Bot
+  gem "rubocop-factory_bot", "~> 2.27", require: false
+  # Rubocop Capybara is used by Rubocop to lint Capybara tests
+  gem "rubocop-capybara", "~> 2.22", require: false
+
+  # Use ERB Lint to lint HTML and ERB files
+  gem "erb_lint", "~> 0.9", require: false
+
+  # Use RSpec Rails as the testing framework
+  gem "rspec-rails", "~> 8.0"
+
+  # Use Factory bot to create test fixtures
+  gem "factory_bot_rails", "~> 6.5"
+  # Use Faker to create pseduofake test data
+  gem "faker", "~> 3.5"
 end
 
 group :development do
@@ -75,4 +99,25 @@ group :development do
   gem "memory_profiler", "~> 1.1"
   # Stackprof adds call stack profiling flamegraphs to Rack Mini Profiler
   gem "stackprof", "~> 0.2"
+end
+
+group :test do
+  # Use Capybara for tests simulating user interactions
+  gem "capybara", "~> 3.40"
+  # Selenium Webdriver is used by Capybara as the headless web browser
+  gem "selenium-webdriver", "~> 4.34"
+  # Use Capybara Screenshot to automatically save a screenshot of failing Capybara tests
+  gem "capybara-screenshot", "~> 1.0"
+
+  # Use Shoulda Matcheres to add common one-liner tests
+  gem "shoulda-matchers", "~> 6.5"
+
+  # Use Fuubar to improve the RSpec progress bar
+  gem "fuubar", "~> 2.5"
+
+  # Use Superdiff to improve the diff between RSpec test objects
+  gem "super_diff", "~> 0.16"
+
+  # Use SimpleCov to measure test code coverage
+  gem "simplecov", "~> 0.22", require: false
 end
