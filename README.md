@@ -1,24 +1,7 @@
-# README
+# Charity Network
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Continuous Integration](https://github.com/appalachio/CharityNetwork/actions/workflows/ci.yml/badge.svg?branch=main)
+[![Project Linter](https://img.shields.io/badge/code_linter-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-ruby-brightgreen.svg)](https://rubystyle.guide)
+[![Rails Style Guide](https://img.shields.io/badge/code_style-rails-brightgreen.svg)](https://rails.rubystyle.guide)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
