@@ -1,1 +1,15 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/*
+ * Override Tailwind's default styles to enable bullet points and lists in Action Text forms.
+ */
+@layer base {
+  ul {
+    @apply list-disc list-inside
+  }
+  ol {
+    @apply list-decimal list-inside
+  }
+}
+
