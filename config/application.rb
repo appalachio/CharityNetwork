@@ -38,5 +38,8 @@ module CharityNetwork
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Disable Mission Control Jobs HTTP Basic Auth (use Devise authentication instead)
+    config.mission_control.jobs.http_basic_auth_enabled = false
   end
 end

@@ -28,6 +28,9 @@ gem "solid_cache", "~> 1.0"
 gem "solid_queue", "~> 1.1"
 gem "solid_cable", "~> 3.0"
 
+# Use Mission Control Jobs to provide a frontend for Solid Queue jobs
+gem "mission_control-jobs", "~> 1.1"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.18", require: false
 

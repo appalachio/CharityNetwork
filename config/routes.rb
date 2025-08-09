@@ -1,5 +1,8 @@
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  # View and control background jobs
+  mount MissionControl::Jobs::Engine, at: "/background_jobs"
+
   # In development, send emails to a new tab of the default web browser
   mount LetterOpenerWeb::Engine, at: "/sent_emails" if Rails.env.development?
 
