@@ -19,3 +19,4 @@ pin "util-deprecate" # @1.0.2
 pin "@tailwindcss/forms", to: "@tailwindcss--forms.js" # @0.5.10
 pin "mini-svg-data-uri" # @1.4.4
 pin "tailwindcss/defaultTheme", to: "tailwindcss--defaultTheme.js" # @4.1.11
+pin "local-time" # @3.0.3
