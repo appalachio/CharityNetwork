@@ -49,6 +49,9 @@ gem "better_html", "~> 2.1"
 # Use Paper Trail to track and store changes to models
 gem "paper_trail", "~> 16.0"
 
+# Use FriendlyID to customize URL slugs for models
+gem "friendly_id", "~> 5.5"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.11", platforms: %i[ mri windows ], require: "debug/prelude"
