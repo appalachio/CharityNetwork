@@ -46,6 +46,9 @@ gem "image_processing", "~> 1.2"
 # Use Better HTML to replace the normal ERB parser with an HTML aware ERB parser
 gem "better_html", "~> 2.1"
 
+# Use Paper Trail to track and store changes to models
+gem "paper_trail", "~> 16.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.11", platforms: %i[ mri windows ], require: "debug/prelude"
