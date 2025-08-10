@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+@plugin "./daisyui.js" {
+   themes: all;
+}
 
 /*
  * Override Tailwind's default styles to enable bullet points and lists in Action Text forms.
