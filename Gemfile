@@ -58,6 +58,9 @@ gem "kaminari", "~> 1.2"
 # Use Local Time to display datetimes in the user's timezone
 gem "local_time", "~> 3.0"
 
+# Use Devise for user authentication
+gem "devise", "~> 4.9"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.11", platforms: %i[ mri windows ], require: "debug/prelude"

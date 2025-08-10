@@ -3,5 +3,5 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   # Track which user is responsible for changing a model
-  # before_action :set_paper_trail_whodunnit
+  before_action :set_paper_trail_whodunnit
 end
