@@ -1,0 +1,18 @@
+<div id="<%= dom_id charity %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= charity.name %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= charity.description %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Logo:</strong>
+    <%= link_to charity.logo.filename, charity.logo, class: "text-gray-700 underline hover:no-underline" if charity.logo.attached? %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Contact info:</strong>
+    <%= charity.contact_info %>
+  </div>
+</div>

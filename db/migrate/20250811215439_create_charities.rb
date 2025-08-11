@@ -1,0 +1,15 @@
+class CreateCharities < ActiveRecord::Migration[8.0]
+  def change
+    create_table :charities, id: :uuid do |t|
+      t.text :name, null: false
+      t.text :slug, null: false
+      t.text :contact_info
+
+      t.datetime :archived_at
+      t.timestamps
+    end
+
+    add_index :charities, :name, unique: true
+    add_index :charities, :slug, unique: true
+  end
+end
