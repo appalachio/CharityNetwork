@@ -11,7 +11,7 @@ class CharitiesController < ApplicationController
     # If the user uses an old charity URL, redirect to the latest URL and show a flash alert
     if request.path != charity_path(@charity)
       flash.alert = "The charity once at #{request.url} has been updated, and is now located at \
-          #{page_url(@charity)}. You have been redirected."
+          #{charity_url(@charity)}. You have been redirected."
       redirect_to @charity, status: :moved_permanently and return
     end
   end

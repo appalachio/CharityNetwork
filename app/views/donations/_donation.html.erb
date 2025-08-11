@@ -1,0 +1,40 @@
+<div id="<%= dom_id donation %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= donation.name %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Slug:</strong>
+    <%= donation.slug %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Quantity:</strong>
+    <%= donation.quantity %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= donation.description %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Condition:</strong>
+    <%= donation.condition %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Pictures:</strong>
+    <% donation.pictures.each do |picture| %>
+      <div><%= link_to picture.filename, picture, class: "text-gray-700 underline hover:no-underline" %></div>
+    <% end %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Claimed at:</strong>
+    <%= donation.claimed_at %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Picked up at:</strong>
+    <%= donation.picked_up_at %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Archived at:</strong>
+    <%= donation.archived_at %>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  # Create donations
+  resources :donations
   # Create charity organizations
   resources :charities
   # Create content management system pages
