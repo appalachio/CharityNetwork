@@ -18,11 +18,15 @@ class DonationsController < ApplicationController
 
   # GET /donations/new
   def new
+    authenticate_user!
+
     @donation = Donation.new
   end
 
   # GET /donations/1/edit
   def edit
+    authenticate_user!
+
     # If the user uses an old edit donation URL, redirect to the latest URL and show a flash alert
     if request.path != edit_donation_path(@donation)
       flash.alert = "The donation once at #{request.url} has been updated, and is now located at \
@@ -33,6 +37,8 @@ class DonationsController < ApplicationController
 
   # POST /donations or /donations.json
   def create
+    authenticate_user!
+
     @donation = Donation.new(donation_params)
 
     respond_to do |format|
@@ -48,6 +54,8 @@ class DonationsController < ApplicationController
 
   # PATCH/PUT /donations/1 or /donations/1.json
   def update
+    authenticate_user!
+
     respond_to do |format|
       if @donation.update(donation_params)
         format.html { redirect_to @donation, notice: "Donation was successfully updated." }
@@ -61,6 +69,8 @@ class DonationsController < ApplicationController
 
   # DELETE /donations/1 or /donations/1.json
   def destroy
+    authenticate_user!
+
     @donation.destroy!
 
     respond_to do |format|

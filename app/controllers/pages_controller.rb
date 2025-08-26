@@ -18,11 +18,15 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
+    authenticate_user!
+
     @page = Page.new
   end
 
   # GET /pages/1/edit
   def edit
+    authenticate_user!
+
     # If the user uses an old edit page URL, redirect to the latest URL and show a flash alert
     if request.path != edit_page_path(@page)
       flash.alert = "The page once at #{request.url} has been updated, and is now located at \
@@ -33,6 +37,8 @@ class PagesController < ApplicationController
 
   # POST /pages or /pages.json
   def create
+    authenticate_user!
+
     @page = Page.new(page_params)
 
     respond_to do |format|
@@ -48,6 +54,8 @@ class PagesController < ApplicationController
 
   # PATCH/PUT /pages/1 or /pages/1.json
   def update
+    authenticate_user!
+
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to @page, notice: "Page was successfully updated." }
@@ -61,6 +69,8 @@ class PagesController < ApplicationController
 
   # DELETE /pages/1 or /pages/1.json
   def destroy
+    authenticate_user!
+
     @page.destroy!
 
     respond_to do |format|

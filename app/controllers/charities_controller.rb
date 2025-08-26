@@ -18,11 +18,15 @@ class CharitiesController < ApplicationController
 
   # GET /charities/new
   def new
+    authenticate_user!
+
     @charity = Charity.new
   end
 
   # GET /charities/1/edit
   def edit
+    authenticate_user!
+
     # If the user uses an old edit charity URL, redirect to the latest URL and show a flash alert
     if request.path != edit_charity_path(@charity)
       flash.alert = "The charity once at #{request.url} has been updated, and is now located at \
@@ -33,6 +37,8 @@ class CharitiesController < ApplicationController
 
   # POST /charities or /charities.json
   def create
+    authenticate_user!
+
     @charity = Charity.new(charity_params)
 
     respond_to do |format|
@@ -48,6 +54,8 @@ class CharitiesController < ApplicationController
 
   # PATCH/PUT /charities/1 or /charities/1.json
   def update
+    authenticate_user!
+
     respond_to do |format|
       if @charity.update(charity_params)
         format.html { redirect_to @charity, notice: "Charity was successfully updated." }
@@ -61,6 +69,8 @@ class CharitiesController < ApplicationController
 
   # DELETE /charities/1 or /charities/1.json
   def destroy
+    authenticate_user!
+
     @charity.destroy!
 
     respond_to do |format|
