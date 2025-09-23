@@ -40,6 +40,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[8.0]
       t.text     :slug, null: false
       t.boolean  :admin, null: false, default: false
       t.boolean  :moderator, null: false, default: false
+
+      t.belongs_to :charity, foreign_key: true, type: :uuid
     end
 
     add_index :users, :email,                unique: true

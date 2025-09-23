@@ -27,9 +27,11 @@
 #  username               :text             not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  charity_id             :uuid
 #
 # Indexes
 #
+#  index_users_on_charity_id            (charity_id)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_name                  (name) UNIQUE
@@ -37,6 +39,10 @@
 #  index_users_on_slug                  (slug) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #  index_users_on_username              (username) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_ca09cb48e6  (charity_id => charities.id)
 #
 require 'rails_helper'
 

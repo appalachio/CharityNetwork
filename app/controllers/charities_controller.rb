@@ -40,6 +40,7 @@ class CharitiesController < ApplicationController
     authenticate_user!
 
     @charity = Charity.new(charity_params)
+    @charity.users << current_user
 
     respond_to do |format|
       if @charity.save

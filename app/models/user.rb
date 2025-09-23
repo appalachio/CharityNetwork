@@ -27,9 +27,11 @@
 #  username               :text             not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  charity_id             :uuid
 #
 # Indexes
 #
+#  index_users_on_charity_id            (charity_id)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_name                  (name) UNIQUE
@@ -38,11 +40,16 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #  index_users_on_username              (username) UNIQUE
 #
+# Foreign Keys
+#
+#  fk_rails_ca09cb48e6  (charity_id => charities.id)
+#
 class User < ApplicationRecord
   self.implicit_order_column = "created_at"
 
   has_rich_text :profile
   has_one_attached :profile_picture
+  belongs_to :charity, optional: true
 
   validates :name, :username, :email, presence: true
 

@@ -124,6 +124,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
     t.text "slug", null: false
     t.boolean "admin", default: false, null: false
     t.boolean "moderator", default: false, null: false
+    t.uuid "charity_id"
+    t.index ["charity_id"], name: "index_users_on_charity_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
@@ -146,4 +148,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "users", "charities"
 end
