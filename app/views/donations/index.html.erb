@@ -1,19 +1,27 @@
-<% content_for :title, "Donations" %>
+<% content_for :title, "Browsing Donations" %>
 
 <div class="w-full">
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Donations</h1>
-    <%= link_to "New donation", new_donation_path, class: "btn btn-primary" %>
+    <h1 class="font-bold text-4xl">Browsing Donations</h1>
+    <% unless current_user.nil? %>
+      <%= link_to "Add a New Donation", new_donation_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
 
-  <div id="donations" class="min-w-full divide-y divide-gray-200 space-y-5">
+  <div id="donations" class="min-w-full divide-y divide-gray-400 space-y-5">
     <% if @donations.any? %>
       <% @donations.each do |donation| %>
         <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
           <%= render donation %>
           <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
             <%= link_to "Show", donation, class: "btn btn-primary" %>
-            <%= link_to "Claim", claim_donation_path(donation), class: "btn btn-secondary", data: { turbo_confirm: "Are you sure?" } %>
+            <% if current_user and not current_user&.charity.nil? %>
+              <%= button_to "Claim", claim_donation_path(donation), class: "btn btn-secondary", data: { turbo_confirm: "Are you sure you want to claim this donation?" } %>
+            <% end %>
+            <% if current_user and donation.user == current_user %>
+              <%= link_to "Edit", edit_donation_path(donation), class: "btn btn-outline btn-secondary" %>
+              <%= button_to "Remove", donation, method: :delete, class: "btn btn-error", data: { turbo_confirm: "Are you sure you want to remove this donation?" } %>
+            <% end %>
           </div>
         </div>
       <% end %>

@@ -1,11 +1,18 @@
-<% content_for :title, "Showing donation" %>
+<% content_for :title, "Showing Donation" %>
 
 <div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Showing donation</h1>
+  <h1 class="font-bold text-4xl">Showing Donation</h1>
 
   <%= render @donation %>
 
-  <%= link_to "Edit this donation", edit_donation_path(@donation), class: "btn btn-primary" %>
-  <%= link_to "Back", :back, class: "btn btn-secondary" %>
-  <%= button_to "Destroy this donation", @donation, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } %>
+  <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
+    <%= link_to "Back", :back, class: "btn btn-primary" %>
+    <% if current_user and not current_user&.charity.nil? and @donation.claimed_by.nil? %>
+      <%= button_to "Claim", claim_donation_path(@donation), class: "btn btn-secondary", data: { turbo_confirm: "Are you sure you want to claim this donation?" } %>
+    <% end %>
+    <% if current_user and @donation.user == current_user %>
+      <%= link_to "Edit", edit_donation_path(@donation), class: "btn btn-outline btn-secondary" %>
+      <%= button_to "Remove", @donation, method: :delete, class: "btn btn-error", data: { turbo_confirm: "Are you sure you want to remove this donation?" } %>
+    <% end %>
+  </div>
 </div>

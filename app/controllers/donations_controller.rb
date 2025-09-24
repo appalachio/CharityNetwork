@@ -3,7 +3,7 @@ class DonationsController < ApplicationController
 
   # GET /donations or /donations.json
   def index
-    @donations = Donation.all
+    @donations = Donation.where(claimed_by: nil)
   end
 
   # GET /donations/1 or /donations/1.json
