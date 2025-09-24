@@ -57,6 +57,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
     t.text "name", null: false
     t.text "slug", null: false
     t.text "contact_info"
+    t.text "registration_number"
     t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

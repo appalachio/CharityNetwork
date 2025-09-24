@@ -2,13 +2,14 @@
 #
 # Table name: charities
 #
-#  id           :uuid             not null, primary key
-#  archived_at  :datetime
-#  contact_info :text
-#  name         :text             not null
-#  slug         :text             not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                  :uuid             not null, primary key
+#  archived_at         :datetime
+#  contact_info        :text
+#  name                :text             not null
+#  registration_number :text
+#  slug                :text             not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
 # Indexes
 #

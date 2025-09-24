@@ -7,9 +7,11 @@
 
   <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
     <%= link_to "Back", :back, class: "btn btn-primary" %>
+
     <% if current_user and not current_user&.charity.nil? and @donation.claimed_by.nil? %>
       <%= button_to "Claim", claim_donation_path(@donation), class: "btn btn-secondary", data: { turbo_confirm: "Are you sure you want to claim this donation?" } %>
     <% end %>
+
     <% if current_user and @donation.user == current_user %>
       <%= link_to "Edit", edit_donation_path(@donation), class: "btn btn-outline btn-secondary" %>
       <%= button_to "Remove", @donation, method: :delete, class: "btn btn-error", data: { turbo_confirm: "Are you sure you want to remove this donation?" } %>

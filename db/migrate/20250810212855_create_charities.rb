@@ -4,6 +4,7 @@ class CreateCharities < ActiveRecord::Migration[8.0]
       t.text :name, null: false
       t.text :slug, null: false
       t.text :contact_info
+      t.text :registration_number
 
       t.datetime :archived_at
       t.timestamps

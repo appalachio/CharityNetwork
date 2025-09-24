@@ -2,13 +2,14 @@
 #
 # Table name: charities
 #
-#  id           :uuid             not null, primary key
-#  archived_at  :datetime
-#  contact_info :text
-#  name         :text             not null
-#  slug         :text             not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                  :uuid             not null, primary key
+#  archived_at         :datetime
+#  contact_info        :text
+#  name                :text             not null
+#  registration_number :text
+#  slug                :text             not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
 # Indexes
 #
@@ -23,7 +24,7 @@ class Charity < ApplicationRecord
   has_many :users
   has_many :donations, inverse_of: "claimed_by" # Donations this charity has claimed
 
-  validates :name, presence: true
+  validates :name, :registration_number, presence: true
 
   # Track and store changes to charities
   has_paper_trail

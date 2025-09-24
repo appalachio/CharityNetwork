@@ -1,18 +1,32 @@
 <div id="<%= dom_id charity %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= charity.name %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= charity.description %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Logo:</strong>
-    <%= link_to charity.logo.filename, charity.logo, class: "text-gray-700 underline hover:no-underline" if charity.logo.attached? %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Contact info:</strong>
-    <%= charity.contact_info %>
-  </div>
+  <% if charity.name? %>
+    <div class="block">
+      <strong class="font-medium mb-1">Name:</strong>
+      <%= charity.name %>
+    </div>
+  <% end %>
+  <% if charity.registration_number? %>
+    <div class="block">
+      <strong class="font-medium mb-1">Registration Number:</strong>
+      <%= charity.registration_number %>
+    </div>
+  <% end %>
+  <% if charity.description? %>
+    <div>
+      <strong class="block font-medium mb-1">Description:</strong>
+      <%= charity.description %>
+    </div>
+  <% end %>
+  <% if charity.contact_info? %>
+    <div class="block">
+      <strong class="font-medium mb-1">Contact Info:</strong>
+      <%= charity.contact_info %>
+    </div>
+  <% end %>
+  <% if charity.logo.attached? %>
+    <div>
+      <strong class="block font-medium mb-1">Logo:</strong>
+      <%= link_to charity.logo.filename, charity.logo, class: "text-gray-700 underline hover:no-underline" if charity.logo.attached? %>
+    </div>
+  <% end %>
 </div>
