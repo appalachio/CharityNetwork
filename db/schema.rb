@@ -70,11 +70,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
     t.integer "quantity", null: false
     t.text "condition"
     t.datetime "claimed_at"
-    t.datetime "picked_up_at"
+    t.uuid "user_id"
     t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_donations_on_slug", unique: true
+    t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

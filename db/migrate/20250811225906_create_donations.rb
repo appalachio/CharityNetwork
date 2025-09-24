@@ -7,7 +7,7 @@ class CreateDonations < ActiveRecord::Migration[8.0]
       t.text :condition
 
       t.datetime :claimed_at
-      t.datetime :picked_up_at
+      t.belongs_to :user, type: :uuid
       t.datetime :archived_at
       t.timestamps
     end

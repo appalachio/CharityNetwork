@@ -50,6 +50,7 @@ class User < ApplicationRecord
   has_rich_text :profile
   has_one_attached :profile_picture
   belongs_to :charity, optional: true
+  has_many :donations
 
   validates :name, :username, :email, presence: true
 

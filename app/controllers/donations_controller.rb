@@ -40,6 +40,7 @@ class DonationsController < ApplicationController
     authenticate_user!
 
     @donation = Donation.new(donation_params)
+    @donation.user = current_user
 
     respond_to do |format|
       if @donation.save
