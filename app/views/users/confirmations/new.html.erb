@@ -1,15 +1,18 @@
-<h2>Resend confirmation instructions</h2>
+<% content_for :title, "Resend Confirmation Instructions" %>
+
+<h1 class="font-bold text-4xl">Resend Confirmation Instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="my-5">
     <%= f.label :email %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: [ "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": resource.errors[:email].none?, "border-red-400 focus:outline-red-600": resource.errors[:email].any? } ] %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions", class: "btn btn-primary" %>
+  <div class="inline">
+    <%= f.submit "Resend Confirmation Instructions", class: "btn btn-primary" %>
+    <%= link_to "Back", :back, class: "btn btn-secondary" %>
   </div>
 <% end %>
 

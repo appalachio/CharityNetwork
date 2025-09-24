@@ -1,24 +1,27 @@
-<h2>Change your password</h2>
+<% content_for :title, "Change Your Password" %>
+
+<h1 class="font-bold text-4xl">Change Your Password</h1>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br>
+  <div class="my-5">
+    <%= f.label :password, "New Password" %>
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: [ "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": resource.errors[:password].none?, "border-red-400 focus:outline-red-600": resource.errors[:password].any? } ] %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="my-5">
+    <%= f.label :password_confirmation, "Confirm New Password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: [ "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": resource.errors[:password_confirmation].none?, "border-red-400 focus:outline-red-600": resource.errors[:password_confirmation].any? } ] %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password", class: "btn btn-primary" %>
+  <div class="inline">
+    <%= f.submit "Change Password", class: "btn btn-primary" %>
+    <%= link_to "Back", :back, class: "btn btn-secondary" %>
   </div>
 <% end %>
 
