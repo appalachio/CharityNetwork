@@ -70,10 +70,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
     t.integer "quantity", null: false
     t.text "condition"
     t.datetime "claimed_at"
+    t.uuid "claimed_by_id"
     t.uuid "user_id"
     t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["claimed_by_id"], name: "index_donations_on_claimed_by_id"
     t.index ["slug"], name: "index_donations_on_slug", unique: true
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
@@ -149,5 +151,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "donations", "charities", column: "claimed_by_id"
   add_foreign_key "users", "charities"
 end

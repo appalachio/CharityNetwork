@@ -21,6 +21,7 @@ class Charity < ApplicationRecord
   has_rich_text :description
   has_one_attached :logo
   has_many :users
+  has_many :donations, inverse_of: "claimed_by" # Donations this charity has claimed
 
   validates :name, presence: true
 

@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-  before_action :set_donation, only: %i[ show edit update destroy ]
+  before_action :set_donation, only: %i[ show edit update destroy claim ]
 
   # GET /donations or /donations.json
   def index
@@ -78,6 +78,22 @@ class DonationsController < ApplicationController
       format.html { redirect_to donations_path, status: :see_other, notice: "Donation was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  # GET /donations/1/claim
+  def claim
+    authenticate_user!
+
+    if current_user.charity.nil?
+      flash.alert = "Only registered charities can claim a donation."
+      redirect_back fallback_location: donations_path and return
+    end
+
+    @donation.claimed_at = DateTime.now
+    @donation.claimed_by = current_user.charity
+    @donation.save!
+
+    redirect_to @donation, status: :found, notice: "You have claimed this donation. Please contact the donator to arrange transportation."
   end
 
   private
