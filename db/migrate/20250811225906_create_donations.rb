@@ -3,6 +3,7 @@ class CreateDonations < ActiveRecord::Migration[8.0]
     create_table :donations, id: :uuid do |t|
       t.text :name, null: false
       t.text :slug, null: false
+      t.text :category, null: false
       t.integer :quantity, null: false
       t.text :condition
 

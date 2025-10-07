@@ -4,6 +4,7 @@
 #
 #  id            :uuid             not null, primary key
 #  archived_at   :datetime
+#  category      :text             not null
 #  claimed_at    :datetime
 #  condition     :text
 #  name          :text             not null

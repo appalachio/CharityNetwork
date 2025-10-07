@@ -56,6 +56,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
   create_table "charities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "name", null: false
     t.text "slug", null: false
+    t.text "needs", default: [], array: true
     t.text "contact_info"
     t.text "registration_number"
     t.datetime "archived_at"
@@ -68,6 +69,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
   create_table "donations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "name", null: false
     t.text "slug", null: false
+    t.text "category", null: false
     t.integer "quantity", null: false
     t.text "condition"
     t.datetime "claimed_at"

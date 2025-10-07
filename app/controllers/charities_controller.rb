@@ -41,6 +41,7 @@ class CharitiesController < ApplicationController
 
     @charity = Charity.new(charity_params)
     @charity.users << current_user
+    @charity.needs = @charity.needs.compact_blank # Remove "" and nil from the array
 
     respond_to do |format|
       if @charity.save
@@ -57,8 +58,11 @@ class CharitiesController < ApplicationController
   def update
     authenticate_user!
 
+    charity_params_modified = charity_params
+    charity_params_modified[:needs] = charity_params[:needs].compact_blank # Remove "" and nil from the array
+
     respond_to do |format|
-      if @charity.update(charity_params)
+      if @charity.update(charity_params_modified)
         format.html { redirect_to @charity, notice: "Charity was successfully updated." }
         format.json { render :show, status: :ok, location: @charity }
       else
@@ -88,6 +92,6 @@ class CharitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def charity_params
-      params.expect(charity: [ :name, :registration_number, :description, :logo, :contact_info ])
+      params.expect(charity: [ :name, :registration_number, :description, :logo, :contact_info, needs: [] ])
     end
 end

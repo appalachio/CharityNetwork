@@ -17,6 +17,12 @@
       <%= charity.description %>
     </div>
   <% end %>
+  <% if charity&.needs&.any? %>
+    <div class="block">
+      <strong class="block font-medium mb-1">Needs:</strong>
+      <%= charity.needs.join(", ") %>
+    </div>
+  <% end %>
   <% if charity.contact_info? %>
     <div class="block">
       <strong class="font-medium mb-1">Contact Info:</strong>

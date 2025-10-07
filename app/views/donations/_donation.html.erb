@@ -5,6 +5,12 @@
       <%= donation.name %>
     </div>
   <% end %>
+  <% if donation.category? %>
+    <div class="block">
+      <strong class="font-medium mb-1">Category:</strong>
+      <%= donation.category %>
+    </div>
+  <% end %>
   <% if donation.quantity? %>
     <div class="block">
       <strong class="font-medium mb-1">Quantity:</strong>

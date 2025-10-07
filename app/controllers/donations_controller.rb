@@ -104,6 +104,6 @@ class DonationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def donation_params
-      params.expect(donation: [ :name, :quantity, :description, :condition, pictures: [] ])
+      params.expect(donation: [ :name, :category, :quantity, :description, :condition, pictures: [] ])
     end
 end

@@ -6,6 +6,7 @@
 #  archived_at         :datetime
 #  contact_info        :text
 #  name                :text             not null
+#  needs               :text             default([]), is an Array
 #  registration_number :text
 #  slug                :text             not null
 #  created_at          :datetime         not null
