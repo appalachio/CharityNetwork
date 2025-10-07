@@ -23,10 +23,10 @@
       <%= charity.needs.join(", ") %>
     </div>
   <% end %>
-  <% if charity.contact_info? %>
+  <% if charity.contact_email? %>
     <div class="block">
-      <strong class="font-medium mb-1">Contact Info:</strong>
-      <%= charity.contact_info %>
+      <strong class="font-medium mb-1">Contact Email:</strong>
+      <%= charity.contact_email %>
     </div>
   <% end %>
   <% if charity.logo.attached? %>

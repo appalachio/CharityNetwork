@@ -1,0 +1,25 @@
+<h1>A New Donation Has Just Been Posted</h1>
+<p>
+A user has just posted a new donation under the category <%= @donation.category %>.
+</p>
+<p>
+<strong>Name: </strong> <%= @donation.name %>
+</p>
+<p>
+<strong>Category: </strong> <%= @donation.category %>
+</p>
+<p>
+<strong>Quantity: </strong> <%= @donation.quantity %>
+</p>
+<p>
+<strong>Condition: </strong> <%= @donation.condition %>
+</p>
+
+<p>
+Remember, if you claim a donation you are responsible for connecting with the donor and arranging transportation!
+</p>
+
+<p>
+You can view the full donation and claim it for your charity on the website.
+<%= link_to "View the Donation", @donation %>
+</p>

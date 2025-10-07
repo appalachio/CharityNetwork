@@ -92,6 +92,6 @@ class CharitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def charity_params
-      params.expect(charity: [ :name, :registration_number, :description, :logo, :contact_info, needs: [] ])
+      params.expect(charity: [ :name, :registration_number, :description, :logo, :contact_email, needs: [] ])
     end
 end

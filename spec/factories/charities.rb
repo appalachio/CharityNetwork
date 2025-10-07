@@ -4,7 +4,7 @@
 #
 #  id                  :uuid             not null, primary key
 #  archived_at         :datetime
-#  contact_info        :text
+#  contact_email       :text
 #  name                :text             not null
 #  needs               :text             default([]), is an Array
 #  registration_number :text

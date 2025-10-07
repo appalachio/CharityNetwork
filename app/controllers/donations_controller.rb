@@ -44,6 +44,13 @@ class DonationsController < ApplicationController
 
     respond_to do |format|
       if @donation.save
+        # Send a notification to each charity that has the donation's category matching one of their needs
+        Charity.all.each do |charity|
+          if charity.needs.include?(@donation.category)
+            DonationMailer.with(charity: charity, donation: @donation).notify_charity.deliver_later
+          end
+        end
+
         format.html { redirect_to @donation, notice: "Donation was successfully created." }
         format.json { render :show, status: :created, location: @donation }
       else
