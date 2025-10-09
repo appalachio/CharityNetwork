@@ -47,7 +47,7 @@ class DonationsController < ApplicationController
         # Send a notification to each charity that has the donation's category matching one of their needs
         Charity.all.each do |charity|
           if charity.needs.include?(@donation.category)
-            DonationMailer.with(charity: charity, donation: @donation).notify_charity.deliver_later
+            DonationMailer.with(charity: charity, donation: @donation).notify_charity.deliver_now
           end
         end
 
