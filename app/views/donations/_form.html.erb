@@ -18,7 +18,7 @@
 
   <div class="my-5">
     <%= form.label :category %>
-    <%= form.select :category, options_for_select(donation_categories) %>
+    <%= form.select :category, options_for_select(donation_categories, selected: donation.category) %>
   </div>
 
   <div class="my-5">
