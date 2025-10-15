@@ -26,6 +26,7 @@ class Charity < ApplicationRecord
   has_many :donations, inverse_of: "claimed_by" # Donations this charity has claimed
 
   validates :name, :registration_number, presence: true
+  validates :name, uniqueness: true
 
   # Track and store changes to charities
   has_paper_trail
