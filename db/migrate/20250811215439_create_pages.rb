@@ -5,6 +5,8 @@ class CreatePages < ActiveRecord::Migration[8.0]
       t.text :slug, null: false
       t.text :subtitle
 
+      t.belongs_to :user, type: :uuid
+
       t.datetime :published_at
       t.datetime :archived_at
       t.timestamps

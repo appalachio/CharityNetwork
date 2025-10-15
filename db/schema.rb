@@ -72,9 +72,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
     t.text "category", null: false
     t.integer "quantity", null: false
     t.text "condition"
-    t.datetime "claimed_at"
     t.uuid "claimed_by_id"
     t.uuid "user_id"
+    t.datetime "claimed_at"
     t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -98,11 +98,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_225906) do
     t.text "title", null: false
     t.text "slug", null: false
     t.text "subtitle"
+    t.uuid "user_id"
     t.datetime "published_at"
     t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_pages_on_slug", unique: true
+    t.index ["user_id"], name: "index_pages_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

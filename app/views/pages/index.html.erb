@@ -3,7 +3,9 @@
 <div class="w-full">
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Pages</h1>
-    <%= link_to "New page", new_page_path, class: "btn btn-primary" %>
+    <% if current_user %>
+      <%= link_to "New page", new_page_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
 
   <div id="pages" class="min-w-full divide-y divide-gray-200 space-y-5">
@@ -11,11 +13,13 @@
       <% @pages.each do |page| %>
         <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
           <%= render page %>
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", page, class: "btn btn-primary" %>
-            <%= link_to "Edit", edit_page_path(page), class: "btn btn-secondary" %>
-            <%= button_to "Destroy", page, method: :delete, class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } %>
-          </div>
+          <% if page.user == current_user %>
+            <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
+              <%= link_to "Show", page, class: "btn btn-primary" %>
+              <%= link_to "Edit", edit_page_path(page), class: "btn btn-secondary" %>
+              <%= button_to "Delete", page, method: :delete, class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     <% else %>

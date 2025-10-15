@@ -7,11 +7,12 @@ class CreateDonations < ActiveRecord::Migration[8.0]
       t.integer :quantity, null: false
       t.text :condition
 
-      t.datetime :claimed_at
       t.belongs_to :claimed_by, foreign_key: true, type: :uuid, foreign_key: {
         to_table: "public.charities"
       }
       t.belongs_to :user, type: :uuid
+
+      t.datetime :claimed_at
       t.datetime :archived_at
       t.timestamps
     end

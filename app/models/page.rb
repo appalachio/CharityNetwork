@@ -10,15 +10,18 @@
 #  title        :text             not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  user_id      :uuid
 #
 # Indexes
 #
-#  index_pages_on_slug  (slug) UNIQUE
+#  index_pages_on_slug     (slug) UNIQUE
+#  index_pages_on_user_id  (user_id)
 #
 class Page < ApplicationRecord
   self.implicit_order_column = "published_at"
 
   has_rich_text :body
+  belongs_to :user
 
   validates :title, presence: true
 

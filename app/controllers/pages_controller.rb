@@ -9,10 +9,12 @@ class PagesController < ApplicationController
   # GET /pages/1 or /pages/1.json
   def show
     # If the user uses an old page URL, redirect to the latest URL and show a flash alert
-    if request.path != page_path(@page)
-      flash.alert = "The page once at #{request.url} has been updated, and is now located at \
-          #{page_url(@page)}. You have been redirected."
-      redirect_to @page, status: :moved_permanently and return
+    unless @page.title == "Home"
+      if request.path != page_path(@page)
+        flash.alert = "The page once at #{request.url} has been updated, and is now located at \
+            #{page_url(@page)}. You have been redirected."
+        redirect_to @page, status: :moved_permanently and return
+      end
     end
   end
 
@@ -40,6 +42,7 @@ class PagesController < ApplicationController
     authenticate_user!
 
     @page = Page.new(page_params)
+    @page.user = current_user
 
     respond_to do |format|
       if @page.save
