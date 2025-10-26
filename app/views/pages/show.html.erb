@@ -1,5 +1,8 @@
 <% content_for :title, "Showing page" %>
 
+<% if @page.title == 'Home' %>
+  <%= render @page %>
+<% else %>
 <div class="md:w-2/3 w-full">
   <%= render @page %>
 
@@ -9,3 +12,4 @@
     <%= button_to "Delete this page", @page, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn btn-error", data: { turbo_confirm: "Are you sure?" } %>
   <% end %>
 </div>
+<% end %>

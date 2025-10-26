@@ -22,6 +22,7 @@ class Page < ApplicationRecord
 
   has_rich_text :body
   belongs_to :user
+  has_many_attached :pictures
 
   validates :title, presence: true
 

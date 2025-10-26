@@ -1,11 +1,104 @@
-<div id="<%= dom_id page %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div class="text-4xl">
-    <%= page.title %>
+<% if page.title == "Home" %>
+  <div class="hero min-h-screen w-full" style="background-image: url(<%= polymorphic_url(page&.pictures&.first) %>);">
+    <div class="hero-overlay"></div>
+    <div class="hero-content text-neutral-content text-center">
+      <div class="max-w-md">
+        <h1 class="mb-5 text-5xl font-bold">Ottawa Helps</h1>
+        <p class="mb-5">
+          "Life’s persistent and most urgent question is, 'What are you doing for others?'"
+          - Martin Luther King Jr.
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="text-2xl">
-    <%= page.subtitle %>
+
+  <div class="collapse collapse-arrow bg-base-100 border border-base-300 mt-4">
+    <input type="radio" name="my-accordion-2" checked="checked">
+    <div class="collapse-title font-semibold">What We Do</div>
+    <div class="collapse-content text-sm">Many of our neighbours are fleeing unimaginable violence. In the process, they've lost almost everything. The future seems bleak.
+
+With your help, they can begin to pick up the pieces to start again. One important way is to help them furnish their new home.
+
+Through this website, we connect generous donors with local charities to ensure gently-used household items can find a new home.</div>
   </div>
-  <div class="prose-xl">
-    <%= page.body %>
+  <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+    <input type="radio" name="my-accordion-2">
+    <div class="collapse-title font-semibold">Do you want to donate something?</div>
+    <div class="collapse-content text-sm">We hope to connect gently used household items with individuals and families that might need them.
+
+We value dignity as well as generosity. Therefore, please don't offer dirty, broken, stained or torn items.</div>
   </div>
-</div>
+  <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+    <input type="radio" name="my-accordion-2">
+    <div class="collapse-title font-semibold">Does your charity need something?</div>
+    <div class="collapse-content text-sm">As a registered charity, your work is the cornerstone of helping others.
+
+Please tell us a little about the work you do. Be sure to include your Canadian Charity registration number and contact information.</div>
+  </div>
+  <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+    <input type="radio" name="my-accordion-2">
+    <div class="collapse-title font-semibold">Frequently Asked Questions</div>
+    <div class="collapse-content text-sm">
+    <p>
+    Q. What about picking up and dropping off donations?
+    </p>
+    <p>
+    A. Once a connection is made, it will be up to the donor and the charity to arrange for transportation.
+    </p>
+    <br>
+    <p>
+    Q. What are examples of household items?
+    </p>
+    <p>
+    A. Household furniture! This includes working appliances. Pots, pans, plates, bowls, cutlery are always needed.
+
+    Pictures and other decorative items can make a house feel more like a home.
+
+    Small carpets!
+
+    Some electronics. Old TVs and VCRs should not be offered.
+    </p>
+    <br>
+    <p>
+    Q. What is gently used?
+    </p>
+    <p>
+    A. Gently-used' is tricky to define. Before donating something, perhaps ask yourself if someone in your family would accept the donation if they needed it. If the answer is yes, this website is for you!
+    </p>
+    <br>
+    <p>
+    Q. What about large, bulky items like china cabinets, office cabinets and sectional couches?
+    </p>
+    <p>
+    A. These are less popular as they can be difficult to move. And they can take up lots of space in smaller apartments.
+    </p>
+    <br>
+    <p>
+    Q. Once my donation is posted, does it stay up until a charity claims it?
+    </p>
+    <p>
+    A. Posts only stay up for 10 days.
+    </p>
+    <br>
+    <p>
+    Q. How do I claim a donation?
+    </p>
+    <p>
+    A. View the donation and select the claim button. You must be both signed in and belonging to a charity!
+  </p>
+  </div>
+  </div>
+
+<% else %>
+  <div id="<%= dom_id page %>" class="w-full sm:w-auto my-5 space-y-5">
+    <div class="text-4xl">
+      <%= page.title %>
+    </div>
+    <div class="text-2xl">
+      <%= page.subtitle %>
+    </div>
+    <div class="prose-xl">
+      <%= page.body %>
+    </div>
+  </div>
+<% end %>
