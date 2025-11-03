@@ -4,6 +4,10 @@ class DonationsController < ApplicationController
   # GET /donations or /donations.json
   def index
     @donations = Donation.where(claimed_by: nil)
+
+    if current_user&.charity
+      @claimed_donations = current_user.charity.donations
+    end
   end
 
   # GET /donations/1 or /donations/1.json

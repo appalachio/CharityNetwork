@@ -9,7 +9,7 @@
     <%= link_to "Back", :back, class: "btn btn-primary" %>
 
     <% if current_user and not current_user&.charity.nil? and @donation.claimed_by.nil? %>
-      <%= button_to "Claim", claim_donation_path(@donation), class: "btn btn-secondary", data: { turbo_confirm: "Are you sure you want to claim this donation?" } %>
+      <%= link_to "Claim", claim_donation_path(@donation), class: "btn btn-secondary", data: { turbo_confirm: "Are you sure you want to claim this donation?" } %>
     <% end %>
 
     <% if current_user and @donation.user == current_user %>
